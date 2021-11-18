@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import styles from "./Form.module.css";
 import { useState } from "react";
-import { addContact } from "../../redux/contacts/contacts-action";
+import { addContact } from "../../redux/contacts/contacts-operations";
 import Notiflix from "notiflix";
 import { useDispatch, useSelector } from "react-redux";
 

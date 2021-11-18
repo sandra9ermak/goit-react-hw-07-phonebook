@@ -4,14 +4,15 @@ import Contact from "../components/Contact/Contact";
 import Form from "../components/Form/Form";
 import Filter from "../components/Filter/Filter";
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { fetchContacts } from "../redux/contacts/contacts-operations";
+import { useDispatch } from "react-redux";
 
 export const App = () => {
-  const { items } = useSelector((state) => state.contacts);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    window.localStorage.setItem("contacts", JSON.stringify(items));
-  }, [items]);
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <div className={styles.container}>
