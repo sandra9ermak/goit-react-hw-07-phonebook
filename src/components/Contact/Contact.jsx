@@ -1,18 +1,14 @@
 import PropTypes from "prop-types";
 import styles from "./Contact.module.css";
 import { deleteContact } from "../../redux/contacts/contacts-operations";
+import { getVisibleContacts } from "../../redux/contacts/contacts-selectors";
 
 import { useDispatch, useSelector } from "react-redux";
 
 const Contact = () => {
-  const { items, filter } = useSelector((state) => state.contacts);
   const dispatch = useDispatch();
 
-  const filtedContacts = items.filter(
-    (item) =>
-      item.name.toLowerCase().includes(filter.toLowerCase()) ||
-      item.number.includes(filter)
-  );
+  const filtedContacts = useSelector(getVisibleContacts);
 
   return (
     <ul className={styles.contactList}>

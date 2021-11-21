@@ -5,12 +5,13 @@ import { useState } from "react";
 import { addContact } from "../../redux/contacts/contacts-operations";
 import Notiflix from "notiflix";
 import { useDispatch, useSelector } from "react-redux";
+import { getItems } from "../../redux/contacts/contacts-selectors";
 
 const Form = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
-  const { items } = useSelector((state) => state.contacts);
+  const items = useSelector(getItems);
   const dispatch = useDispatch();
 
   const handleInputChange = (event) => {
